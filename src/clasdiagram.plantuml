@@ -1,0 +1,77 @@
+@startuml Class Diagram
+
+BookForLoan <|-- Comic
+BookForLoan <|-- Novel
+ILoanFeeCalculation <|.. LoanBookOrder
+Book <|-- BookForLoan
+
+IBookLoanPriceCalcualtion <|.. BookForLoan
+
+
+class Main{
+}
+
+class RepositoryBookForLoan {
+    +getAllBookForLoan()
+}
+
+class RepositoryMember {
+    +getAllMember()
+}
+
+abstract Book{
+    - bookId : String
+    - title : String
+    - author : String
+    - bookPrice :double
+}
+
+abstract BookForLoan{
+    - bookLoanPrice :double
+    - stock : int
+    +calculateBookLoanPrice()
+}
+
+class Comic{
+    - genre : String
+    +calculateBookLoanPrice()
+}
+
+class Novel{
+    - isSeries : boolean
+    +calculateBookLoanPrice()
+}
+
+
+class Member{
+    - memberId : String
+    - memberName : String
+    - adress : String
+}
+
+
+
+
+
+
+class LoanBookOrder{
+    - loanId : String
+    - member : Member
+    - loanBook : BookForLoan
+    - loadDuration : int
+    - loanFee : double
+
+    +calculateLoanFee()
+}
+
+
+interface IBookLoanPriceCalcualtion{
+    calculateBookLoanPrice()
+}
+
+interface ILoanFeeCalculation{
+    calculateLoanFee()
+}
+
+
+@enduml
