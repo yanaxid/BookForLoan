@@ -24,7 +24,7 @@ public class MainApp {
 	MainMenu mainMenu = new MainMenu();
 	mainMenu.mainMenu(books, members, loanOrder);
 	System.out.println("Terimaksih");
-
+	
     }
 
     
